@@ -1,5 +1,8 @@
 <?php
 
+use App\Concert;
+use Carbon\Carbon;
+
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -7,7 +10,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class ViewConcertListingTest extends TestCase
 {
 
-    // use DatabaseMigrations;
+    use DatabaseMigrations;
 
     /** @test */
 
@@ -19,7 +22,7 @@ class ViewConcertListingTest extends TestCase
         $concert = Concert::create([
             'title' => 'The Red Chord',
             'subtitle' => 'with Animosity and Lethargy',
-            'time' => Carbon::parse('December 13, 2016 8:00pm'),
+            'date' => Carbon::parse('December 13, 2016 8:00pm'),
             'price' => 3250,
             'venue' => 'The Mosh Pit',
             'address' => '123 Example Lane',
@@ -39,7 +42,8 @@ class ViewConcertListingTest extends TestCase
 
         $this->see('The Red Chord');
         $this->see('with Animosity and Lethargy');
-        $this->see('December 13, 2016 8:00pm');
+        $this->see('December 13, 2016');
+        $this->see('8:00pm');
         $this->see('32.50');
         $this->see('The Mosh Pit');
         $this->see('123 Example Lane');
