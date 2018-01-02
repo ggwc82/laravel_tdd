@@ -9,30 +9,37 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ConcertTest extends TestCase
 {   
-    use DatabaseMigrations;
 
     /** @test */
 
     function can_get_formatted_date()
     {
-
-        //Arrange
-        //Create a concert with a known date
-
-        $concert = factory(Concert::class)->create([
+        $concert = factory(Concert::class)->make([
             'date' => Carbon::parse('2016-12-01 8:00pm'),
         ]);
 
+        $this->assertEquals('December 1, 2016', $concert->formatted_date);
+    }
+    
+    /** @test */
 
-        //Act
-        
-        $date = $concert->formatted_date;
+    function can_get_formatted_time()
+    {
+        $concert = factory(Concert::class)->make([
+            'date' => Carbon::parse('2016-12-01 05:00:00'), 
+        ]);
 
+        $this->assertEquals('5:00am', $concert->formatted_start_time);
+    }
 
-        //Assert
+    /** @test */
 
-        $this->assertEquals('December 1, 2016', $date);
+    function can_get_ticket_price_in_dollars()
+    {
+        $concert = factory(Concert::class)->make([
+            'ticket_price' => 6750,
+        ]);
 
-
+        $this->assertEquals("67.50", $concert->ticket_price_in_dollars);
     }
 }

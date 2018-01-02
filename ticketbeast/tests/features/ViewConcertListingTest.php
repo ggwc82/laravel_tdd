@@ -23,7 +23,7 @@ class ViewConcertListingTest extends TestCase
             'title' => 'The Red Chord',
             'subtitle' => 'with Animosity and Lethargy',
             'date' => Carbon::parse('December 13, 2016 8:00pm'),
-            'price' => 3250,
+            'ticket_price' => 3250,
             'venue' => 'The Mosh Pit',
             'address' => '123 Example Lane',
             'city' => 'Laraville',

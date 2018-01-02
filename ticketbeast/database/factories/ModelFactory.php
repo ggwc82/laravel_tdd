@@ -29,7 +29,7 @@ $factory->define(App\Concert::class, function (Faker\Generator $faker) {
         'title' => 'The Example Title',
         'subtitle' => 'The Example Subtitle',
         'date' => Carbon::parse('+2 weeks'),
-        'price' => 2000,
+        'ticket_price' => 2000,
         'venue' => 'The Example Theatre',
         'address' => '123 Example Lane',
         'city' => 'Fakeville',
