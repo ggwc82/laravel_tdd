@@ -24,6 +24,7 @@ class CreateConcertsTable extends Migration
             $table->string('city');
             $table->string('postcode');
             $table->text('additional_info');
+            $table->datetime('published_at')->nullable();
             $table->timestamps();
         });
     }
